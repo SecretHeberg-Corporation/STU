@@ -1,5 +1,3 @@
-
-
 def test():
     """
     C'est une fonction de test ?
