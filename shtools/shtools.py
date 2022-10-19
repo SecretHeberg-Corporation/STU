@@ -1,4 +1,4 @@
-def test():
+def SHtest():
     """
     C'est une fonction de test ?
     -oui
