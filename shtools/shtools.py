@@ -3,7 +3,7 @@ import socket
 import requests
 import urllib.request
 import http.client
-import pygeoip
+import time
 
 ############################TEST##############################
 def SHtest():
@@ -15,12 +15,9 @@ def SHtest():
     ok.
     """
     print("SWA Work")
+    
 ############################INFOWEB##############################
-def infoweb(webstr):
-    """
-    Enter a domain --> <infoweb('<domain>')>
-    """
-    httpcode = {
+httpcode = {
     100: ('Continue', 'Request received, please continue'),
     101: ('Switching Protocols',
           'Switching to new protocol; obey Upgrade header'),
@@ -86,6 +83,10 @@ def infoweb(webstr):
     505: ('HTTP Version Not Supported', 'Cannot fulfill request.'),
     }
 
+def infoweb(webstr):
+    """
+    Enter a domain --> <infoweb('<domain>')>
+    """
     webstr = str(webstr)
     webip= socket.gethostbyname(webstr)
     webtest = 0
@@ -99,12 +100,13 @@ def infoweb(webstr):
     disctList = {"Domain":webstr,"IP": webip, "Code": webcode,"Statut": webcheck}
 
     return disctList
-"""
 
+def httpcodeinfo(code):
+      """
+      """
+      assert type(code) == int
+      return requests[code]
 
-import pygeoip
->>> GEOIP = pygeoip.GeoIP("/absolute_path/GeoIP.dat", pygeoip.MEMORY_CACHE)
->>> GEOIP.country_name_by_addr(ip)
-
-"""
+print("Test...")
+time.sleep(0.5)
 print(infoweb('secretheberg.com'))
